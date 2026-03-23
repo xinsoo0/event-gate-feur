@@ -4,9 +4,16 @@ import SignUpIcon from './icons/SignUpIcon'
 import HomePageIcon from './icons/HomePageIcon'
 import { useContext } from 'react'
 import { SessionContext } from '../contexts/SessionContext'
+import supabase from '../utils/supabase'
 
 const NavBar = () => {
     const session = useContext(SessionContext)
+
+    const handleLogout = async () => {
+        const { error } = await supabase.auth.signOut()
+        if (error) alert("Mabaho bunganga mo")
+    }
+
     return (
         <div className="navbar bg-base-100 shadow-sm">
             <div className="flex w-full max-w-7xl mx-auto">
@@ -23,10 +30,15 @@ const NavBar = () => {
                     </NavLink>
 
                     {!session && (
-                        <NavLink to="/signup" className="btn btn-primary mr-5 rounded-full">
-                            <SignUpIcon className="text-lg" />
-                            Sign Up
-                        </NavLink>
+                        <>
+                            <NavLink to="/signup" className="btn btn-primary mr-5 rounded-full">
+                                <SignUpIcon className="text-lg" />
+                                Sign Up
+                            </NavLink><NavLink to="/login" className="btn btn-primary mr-5 rounded-full">
+                                <SignUpIcon className="text-lg" />
+                                Login
+                            </NavLink>
+                        </>
                     )}
 
                     <div className="dropdown dropdown-end">
@@ -47,7 +59,10 @@ const NavBar = () => {
                                 </a>
                             </li>
                             <li><a>Settings</a></li>
-                            <li><a>Logout</a></li>
+                            <li>
+                                <button onClick={handleLogout}>Logout
+                                </button>
+                            </li>
                         </ul>
                     </div>
                 </div>

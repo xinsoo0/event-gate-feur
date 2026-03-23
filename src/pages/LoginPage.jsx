@@ -14,10 +14,11 @@ const LoginPage = () => {
             password: formData.get("password")
         }
         // console.log("signupForm", signupForm)
-        const { data, error } = await supabase.auth.login({
-            email: login.email,
+        const { data, error } = await supabase.auth.signInWithPassword({
+            email: loginForm.email,
             password: loginForm.password,
         })
+
         if (error) alert(error)
         if (data) console.log(data)
     }
@@ -35,7 +36,7 @@ const LoginPage = () => {
                                 type="text"
                             />
                             <Input
-                                name="Password"
+                                name="password"
                                 placeholder="Enter Your Password"
                                 label="Password"
                                 type="password"
