@@ -4,25 +4,13 @@ import Input from '../components/icons/form/Input'
 import Card from '../components/icons/Card'
 import SignUpButton from '../components/icons/SignUpButton'
 
-const SignupPage = () => {
+const LoginPage = () => {
     return (
         <MainLayout>
             <div className="flex justify-center items-center h-screen">
                 <div className="w-96">
                     <Card>
-                        <h1 className="text-2xl font-bold mb-4 text-center"> Sign-up Form</h1>
-                        <Input
-                            name="firstname"
-                            placeholder="Enter Your First Name"
-                            label="Firstname"
-                            type="text"
-                        />
-                        <Input
-                            name="lastname"
-                            placeholder="Enter Your Last Name"
-                            label="Lastname"
-                            type="text"
-                        />
+                        <h1 className="text-2xl font-bold mb-4 text-center"> Log in</h1>
                         <Input
                             name="email"
                             placeholder="Enter Your Email"
@@ -40,7 +28,7 @@ const SignupPage = () => {
                             <SignUpButton className="text-sm" />
                             Submit
                         </button>
-                        <h1 className="text-sm mt-4 text-center"> Already have an account? <a href="/login" className="text-primary font-bold"> Log in </a></h1>
+
                     </Card>
                 </div>
             </div>
@@ -48,4 +36,4 @@ const SignupPage = () => {
     )
 }
 
-export default SignupPage
+export default LoginPage
