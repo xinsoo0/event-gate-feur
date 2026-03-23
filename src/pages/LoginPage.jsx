@@ -4,8 +4,20 @@ import Input from '../components/icons/form/Input'
 import Card from '../components/icons/Card'
 import SignUpButton from '../components/icons/SignUpButton'
 import supabase from '../utils/supabase'
+import { useContext, useEffect } from 'react'
+import { SessionContext } from '../contexts/SessionContext'
+import { useNavigate } from 'react-router'
 
 const LoginPage = () => {
+    const session = useContext(SessionContext)
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if (session) {
+            navigate("/")
+        }
+    }, [session, navigate])
+
     const handleSubmit = async (event) => {
         event.preventDefault()
         const formData = new FormData(event.target)
@@ -22,6 +34,8 @@ const LoginPage = () => {
         if (error) alert(error)
         if (data) console.log(data)
     }
+    useEffect(() => { }
+    )
     return (
         <MainLayout>
             <div className="flex justify-center items-center h-screen">
