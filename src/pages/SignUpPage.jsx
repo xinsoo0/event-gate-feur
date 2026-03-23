@@ -3,14 +3,14 @@ import MainLayout from '../layouts/MainLayout'
 import Input from '../components/icons/form/Input'
 import Card from '../components/icons/Card'
 import SignUpButton from '../components/icons/SignUpButton'
-import { supabase } from "../utils/supabase"
+import supabase from '../utils/supabase'
 
 const SignupPage = () => {
     const handleSubmit = async (event) => {
         event.preventDefault()
         const formData = new FormData(event.target)
-        const signupForm = {
-            firstame: formData.get("firstname"),
+        const signUpForm = {
+            firstname: formData.get("firstname"),
             lastname: formData.get("lastname"),
             email: formData.get("email"),
             password: formData.get("password")
@@ -23,6 +23,7 @@ const SignupPage = () => {
         if (error) alert(error)
         if (data) console.log(data)
     }
+
     return (
         <MainLayout>
             <div className="flex justify-center items-center h-screen">
@@ -49,7 +50,7 @@ const SignupPage = () => {
                                 type="text"
                             />
                             <Input
-                                name="Password"
+                                name="password"
                                 placeholder="Enter Your Password"
                                 label="Password"
                                 type="password"
