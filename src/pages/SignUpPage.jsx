@@ -3,6 +3,7 @@ import MainLayout from '../layouts/MainLayout'
 import Input from '../components/icons/form/Input'
 import Card from '../components/icons/Card'
 import SignUpButton from '../components/icons/SignUpButton'
+import { supabase } from "../utils/supabase"
 
 const SignupPage = () => {
     const handleSubmit = async (event) => {
