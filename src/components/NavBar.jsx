@@ -42,30 +42,32 @@ const NavBar = () => {
                         </>
                     )}
 
-                    <div className="dropdown dropdown-end">
-                        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                            <div className="w-10 rounded-full">
-                                <img
-                                    alt="Tailwind CSS Navbar component"
-                                    src="https://i.pinimg.com/originals/d8/d8/3a/d8d83a4495d29a16840a44fb462093e4.jpg" />
+                    {session && (
+                        <div className="dropdown dropdown-end">
+                            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                                <div className="w-10 rounded-full">
+                                    <img
+                                        alt="Tailwind CSS Navbar component"
+                                        src="https://i.pinimg.com/originals/d8/d8/3a/d8d83a4495d29a16840a44fb462093e4.jpg" />
+                                </div>
                             </div>
+                            <ul
+                                tabIndex="-1"
+                                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                                <li>
+                                    <a className="justify-between">
+                                        Profile
+                                        <span className="badge">New</span>
+                                    </a>
+                                </li>
+                                <li><a>Settings</a></li>
+                                <li>
+                                    <button onClick={handleLogout}>Logout
+                                    </button>
+                                </li>
+                            </ul>
                         </div>
-                        <ul
-                            tabIndex="-1"
-                            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                            <li>
-                                <a className="justify-between">
-                                    Profile
-                                    <span className="badge">New</span>
-                                </a>
-                            </li>
-                            <li><a>Settings</a></li>
-                            <li>
-                                <button onClick={handleLogout}>Logout
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
+                    )}
                 </div>
             </div>
         </div>
