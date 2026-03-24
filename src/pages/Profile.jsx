@@ -22,8 +22,9 @@ const Profile = () => {
             fetchProfile()
         }
     }, [session])
-    return <MainLayout> This is the profile page </MainLayout>
-
+    return (
+        <MainLayout> This is the profile page </MainLayout>
+    )
 }
 
 export default Profile

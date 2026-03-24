@@ -22,19 +22,32 @@ const SignupPage = () => {
     const handleSubmit = async (event) => {
         event.preventDefault()
         const formData = new FormData(event.target)
-        const signUpForm = {
+        const signupForm = {
             firstname: formData.get("firstname"),
             lastname: formData.get("lastname"),
             email: formData.get("email"),
             password: formData.get("password")
         }
         // console.log("signupForm", signupForm)
-        const { data, error } = await supabase.auth.signUp({
-            email: signUpForm.email,
-            password: signUpForm.password,
+        const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
+            email: signupForm.email,
+            password: signupForm.password,
         })
-        if (error) alert(error)
-        if (data) console.log(data)
+        if (signUpError) alert(signUpError)
+        console.log("signUpData", signUpData)
+        if (signUpData) {
+            console.log("signUpData", signUpData)
+            const { data: profileData, error: profileError } = await supabase
+                .from("profiles")
+                .insert({
+                    id: signUpData.user.id,
+                    firstname: signupForm.firstname,
+                    lastname: signupForm.lastname,
+                    email: signupForm.email,
+                })
+            if (profileError) alert(profileError)
+            if (profileData) console.log(" profileData", profileData)
+        }
     }
 
     return (
