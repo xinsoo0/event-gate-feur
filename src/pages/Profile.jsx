@@ -1,12 +1,15 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect, useContext, useState } from 'react'
 import MainLayout from '../layouts/MainLayout'
 import supabase from '../utils/supabase'
 import { SessionContext } from '../contexts/SessionContext'
-
+import { Link } from 'react-router'
+import EditProfileIcon from '../components/icons/EditProfileIcon'
 
 
 const Profile = () => {
     const session = useContext(SessionContext)
+    const [profile, setProfile] = useState(null)
+
     useEffect(() => {
         const fetchProfile = async () => {
             const { data, error } = await supabase
@@ -16,14 +19,31 @@ const Profile = () => {
                 .single()
 
             if (error) alert(error)
-            if (data) console.log("data", data)
+            if (data) {
+                setProfile(data)
+            }
         }
         if (session) {
             fetchProfile()
         }
     }, [session])
     return (
-        <MainLayout> This is the profile page </MainLayout>
+        <MainLayout>
+            <div className="pt-10 flex justify-between">
+                <div>
+                    Firstname: {profile?.firstname} <br />
+                    Lastname: {profile?.lastname} <br />
+                    Email: {profile?.email}
+                </div>
+                <div>
+
+                    <Link to="/edit-profile" className="btn btn-primary rounded-full">
+                        <EditProfileIcon className="text-lg" />
+                        Edit Profile
+                    </Link>
+                </div>
+            </div>
+        </MainLayout>
     )
 }
 
