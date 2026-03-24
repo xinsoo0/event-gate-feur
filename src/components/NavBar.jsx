@@ -11,6 +11,7 @@ const NavBar = () => {
 
     const handleLogout = async () => {
         const { error } = await supabase.auth.signOut()
+        window.location.href = "/login"
         if (error) alert("Mabaho bunganga mo")
     }
 
@@ -70,5 +71,4 @@ const NavBar = () => {
         </div>
     )
 }
-
 export default NavBar
