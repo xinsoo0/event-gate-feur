@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react'; //object distructuring
 import supabase from './utils/supabase';
 import { SessionContext } from './contexts/SessionContext';
 import Profile from './pages/Profile';
+import EditProfilePage from './pages/EditProfilePage';
 
 function App() {
 
@@ -37,6 +38,7 @@ function App() {
         <Route path="signup" element={<SignUpPage />} />
         <Route path="login" element={<LoginPage />} />
         <Route path="profile" element={<Profile />} />
+        <Route path="editprofile" element={<EditProfilePage />} />
       </Routes>
     </SessionContext.Provider>
   )
