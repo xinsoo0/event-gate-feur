@@ -4,8 +4,21 @@ import Input from '../components/icons/form/Input'
 import Card from '../components/icons/Card'
 import SignUpButton from '../components/icons/SignUpButton'
 import supabase from '../utils/supabase'
+import { useEffect, useContext } from 'react'
+import { useNavigate } from 'react-router'
+import { SessionContext } from '../contexts/SessionContext'
 
 const SignupPage = () => {
+    const session = useContext(SessionContext)
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if (session) {
+            navigate("/")
+        }
+    }, [session, navigate])
+
+
     const handleSubmit = async (event) => {
         event.preventDefault()
         const formData = new FormData(event.target)
