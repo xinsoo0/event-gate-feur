@@ -1,11 +1,21 @@
 import React from "react";
 import MainLayout from "../layouts/MainLayout";
 import Input from "../components/icons/form/Input";
+import supabase from "../utils/supabase";
 
 const AddEvent = () => {
-    const handleSubmit = (event) => {
-        event.prevrentDefault()
-        console.log("form submit triggered")
+    const handleSubmit = async (event) => {
+        event.preventDefault()
+        const formData = new FormData(event.target)
+        const formDataObject = Object.fromEntries(formData.entries())
+
+        const { data: eventData, error: eventError } = await supabase
+            .from("events")
+            .insert(formDataObject)
+            .select()
+            .single()
+        if (eventError) alert(alertError)
+        if (eventData) console.log(eventData)
     }
 
     return (
@@ -15,7 +25,12 @@ const AddEvent = () => {
                     <div className="flex">
                         <div className="w-1/3">
                             {/* title, start date, end date, start time, end time, location */}
-                            <Input type="text" label="Title" placeholder="Enter Title" />
+                            <Input
+                                type="text"
+                                label="Event Title"
+                                placeholder="Enter Title"
+                                name="event_title"
+                            />
                             <Input
                                 type="date"
                                 label="Start Date"
