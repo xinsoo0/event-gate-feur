@@ -7,7 +7,7 @@ import { SessionContext } from '../contexts/SessionContext'
 import supabase from '../utils/supabase'
 
 const NavBar = () => {
-    const { session } = useContext(SessionContext)
+    const { session, profile } = useContext(SessionContext)
 
     const handleLogout = async () => {
         const { error } = await supabase.auth.signOut()
@@ -42,7 +42,15 @@ const NavBar = () => {
                         </>
                     )}
 
+                    {profile?.role === "admin" && (
+                        <NavLink to="/manage-events"
+                            className="btn btn-primary mr-5 rounded-full btn-outline">
+                            Manage Events
+                        </NavLink>
+                    )
+                    }
                     {session && (
+
                         <div className="dropdown dropdown-end">
                             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                                 <div className="w-10 rounded-full">

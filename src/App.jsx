@@ -8,6 +8,7 @@ import supabase from './utils/supabase';
 import { SessionContext } from './contexts/SessionContext';
 import Profile from './pages/Profile';
 import EditProfilePage from './pages/EditProfilePage';
+import ManageEvents from './pages/ManageEvents';
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
       console.log("session", session)
       if (event === 'SIGNED_OUT') {
         setSession(null)
+        setProfile(null)
       } else if (session) {
         setSession(session)
       }
@@ -58,7 +60,7 @@ function App() {
         <Route path="signup" element={<SignUpPage />} />
         <Route path="login" element={<LoginPage />} />
         <Route path="profile" element={<Profile />} />
-        <Route path="editprofile" element={<EditProfilePage />} />
+        <Route path="/manage-events" element={<ManageEvents />} />
       </Routes>
     </SessionContext.Provider>
   )
