@@ -7,7 +7,7 @@ import EditProfileIcon from '../components/icons/EditProfileIcon'
 
 
 const Profile = () => {
-    const session = useContext(SessionContext)
+    const { session } = useContext(SessionContext)
     const [profile, setProfile] = useState(null)
 
     useEffect(() => {

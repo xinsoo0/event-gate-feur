@@ -7,7 +7,7 @@ import { SessionContext } from '../contexts/SessionContext'
 import supabase from '../utils/supabase'
 
 const NavBar = () => {
-    const session = useContext(SessionContext)
+    const { session } = useContext(SessionContext)
 
     const handleLogout = async () => {
         const { error } = await supabase.auth.signOut()
@@ -48,7 +48,7 @@ const NavBar = () => {
                                 <div className="w-10 rounded-full">
                                     <img
                                         alt="Tailwind CSS Navbar component"
-                                        src="https://i.pinimg.com/originals/d8/d8/3a/d8d83a4495d29a16840a44fb462093e4.jpg" />
+                                        src="https://scontent.fmnl31-1.fna.fbcdn.net/v/t1.6435-9/44738562_307883673370187_5162536911536914432_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=b895b5&_nc_ohc=9aqpQdTLjf4Q7kNvwERMab_&_nc_oc=Ado1h6cZ9-j64ZaxW1arcloAlTyFxtpPXMgpBOKZ3RWnYKtnKvRQagFMOqXNpXEe9SE&_nc_zt=23&_nc_ht=scontent.fmnl31-1.fna&_nc_gid=XGV4hfvpliI6eJDo_css4g&_nc_ss=7a30f&oh=00_AfzMRLtNJjSiNFUjb0ZeSpygtG58pmyrSWL7YL87AhWxlA&oe=69EAABE3" />
                                 </div>
                             </div>
                             <ul

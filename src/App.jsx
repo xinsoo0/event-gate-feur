@@ -13,6 +13,7 @@ function App() {
 
   // state
   const [session, setSession] = useState(null)
+  const [profile, setProfile] = useState(null)
 
   // useEffect
   useEffect(() => {
@@ -31,8 +32,27 @@ function App() {
       subscription.unsubscribe()
     }
   }, [])
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      const { data, error } = await supabase
+        .from('profiles')
+        .select()
+        .eq("id", session.user.id)
+        .single()
+
+      if (error) alert(error)
+      if (data) {
+        setProfile(data)
+      }
+    }
+    if (session) {
+      fetchProfile()
+    }
+  }, [session])
+
   return (
-    <SessionContext.Provider value={session}>
+    <SessionContext.Provider value={{ session, profile }}>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="signup" element={<SignUpPage />} />

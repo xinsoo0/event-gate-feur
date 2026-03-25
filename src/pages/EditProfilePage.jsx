@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router'
 import { SessionContext } from '../contexts/SessionContext'
 
 const EditProfilePage = () => {
-    const session = useContext(SessionContext)
+    const { session, profile } = useContext(SessionContext)
     const navigate = useNavigate()
 
     const handleSubmit = async (event) => {
@@ -39,6 +39,7 @@ const EditProfilePage = () => {
         }
     }
 
+
     return (
         <MainLayout>
             <div className="flex justify-center items-center h-screen">
@@ -51,18 +52,21 @@ const EditProfilePage = () => {
                                 placeholder="Enter Your First Name"
                                 label="Firstname"
                                 type="text"
+                                defaultValue={profile?.firstname}
                             />
                             <Input
                                 name="lastname"
                                 placeholder="Enter Your Last Name"
                                 label="Lastname"
                                 type="text"
+                                defaultValue={profile?.lastname}
                             />
                             <Input
                                 name="email"
                                 placeholder="Enter Your Email"
                                 label="Email"
                                 type="text"
+                                defaultValue={profile?.email}
                             />
                             <button
                                 className="btn btn-primary rounded-full w-full mt-4 flex items-center justify-center gap-1">
