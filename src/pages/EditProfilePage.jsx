@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router'
 import { SessionContext } from '../contexts/SessionContext'
 
 const EditProfilePage = () => {
-    const { session, profile } = useContext(SessionContext)
+    const { session, profile, setProfile } = useContext(SessionContext)
     const navigate = useNavigate()
 
     const handleSubmit = async (event) => {
@@ -32,10 +32,12 @@ const EditProfilePage = () => {
 
             .eq("id", session.user.id)
             .select()
+            .single()
 
         if (profileError) alert(profileError)
         if (profileData) {
             navigate("/profile")
+            setProfile(profileData)
         }
     }
 
