@@ -33,7 +33,7 @@ const AddEvent = () => {
                                 type="text"
                                 label="Event Title"
                                 placeholder="Enter Title"
-                                name="event_title"
+                                name="title"
                             />
                             <Input
                                 type="date"
