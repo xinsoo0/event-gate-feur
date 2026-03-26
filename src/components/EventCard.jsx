@@ -69,7 +69,7 @@ const EventCard = ({ event, registrations, setRegistrations }) => {
                     <>
                         <Link
                             to={`/edit-event/${event.id}`}
-                            className="btn btn-primary rounded-full"
+                            className="btn btn-primary ml-3 rounded-full"
                         >
                             Edit
                         </Link>
