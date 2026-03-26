@@ -46,7 +46,7 @@ const Events = () => {
                 </div>
                 <div className="grid grid-cols-3 gap-4">
                     {events?.map((event) => {
-                        return <EventCard eventData={event} />;
+                        return <EventCard eventData={event} registrations={registrations} />;
                     })}
                 </div>
             </div>

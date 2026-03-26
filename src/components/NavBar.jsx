@@ -35,7 +35,9 @@ const NavBar = () => {
                             <NavLink to="/signup" className="btn btn-primary mr-5 rounded-full">
                                 <SignUpIcon className="text-lg" />
                                 Sign Up
-                            </NavLink><NavLink to="/login" className="btn btn-primary mr-5 rounded-full">
+                            </NavLink>
+                            <NavLink
+                                to="/login" className="btn btn-primary mr-5 rounded-full">
                                 <SignUpIcon className="text-lg" />
                                 Login
                             </NavLink>
@@ -47,8 +49,16 @@ const NavBar = () => {
                             className="btn btn-primary mr-5 rounded-full btn-outline">
                             Manage Events
                         </NavLink>
-                    )
-                    }
+                    )}
+
+                    {profile?.role === "user" && (
+                        <NavLink
+                            to="/events"
+                            className="btn btn-primary mr-4 rounded-full btn-outline inline-flex items-center text-primary"
+                        >
+                            Events
+                        </NavLink>
+                    )}
                     {session && (
 
                         <div className="dropdown dropdown-end">
