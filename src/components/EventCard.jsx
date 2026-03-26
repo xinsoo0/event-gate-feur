@@ -1,19 +1,17 @@
-import React from 'react'
-import Card from './Card'
-import { Link } from 'react-router'
-import { useContext } from 'react';
-import { SessionContext } from '../contexts/SessionContext';
-import supabase from '../utils/supabase';
+import React from "react";
+import Card from "./Card";
+import { Link } from "react-router";
+import { useContext } from "react";
+import { SessionContext } from "../contexts/SessionContext";
+import supabase from "../utils/supabase";
 
 const EventCard = ({ event, registrations, setRegistrations }) => {
     const { profile } = useContext(SessionContext);
-    const isRegistered = registrations ?? [].some(
+    const isRegistered = registrations?.some(
         (registration) =>
             registration.profile_id === profile?.id &&
             registration.event_id === event.id,
     );
-
-    console.log(isRegistered);
 
     const register = async () => {
         const { data, error } = await supabase
@@ -23,16 +21,15 @@ const EventCard = ({ event, registrations, setRegistrations }) => {
                 profile_id: profile.id,
             })
             .select()
-            .single()
+            .single();
 
-        if (error) alert(error)
+        if (error) alert(error);
         if (data) {
             setRegistrations((prev) => {
-                [...prev, data]
-            })
+                return [...prev, data];
+            });
         }
-
-    }
+    };
 
     const unregister = async () => {
         const { data: deletedRegistration, errorDeleteRegistration } =
@@ -51,10 +48,9 @@ const EventCard = ({ event, registrations, setRegistrations }) => {
         }
     };
 
-
     return (
         <Card>
-            <h2 className="text-xl font-bold"> {event.title} </h2>
+            <h2 className="text-xl font-bold">{event.title}</h2>
             <p>Start Date: {event.start_date}</p>
             <p>End Date: {event.end_date}</p>
             <p>Start Time: {event.start_time}</p>
@@ -85,14 +81,14 @@ const EventCard = ({ event, registrations, setRegistrations }) => {
                 )}
 
                 {profile?.role === "user" && !isRegistered && (
-                    <button class="ml-3 btn btn-primary rounded-full" onClick={register}>
+                    <button className="ml-3 btn btn-primary rounded-full" onClick={register}>
                         Register
                     </button>
                 )}
 
                 {profile?.role === "user" && isRegistered && (
                     <button
-                        class="ml-3 btn btn-secondary rounded-full"
+                        className="ml-3 btn btn-secondary rounded-full"
                         onClick={unregister}
                     >
                         Unregister
