@@ -11,6 +11,7 @@ import EditProfilePage from './pages/EditProfilePage';
 import ManageEvents from './pages/ManageEvents';
 import AddEvent from './pages/AddEvent';
 import EditEvent from './pages/EditEvent';
+import Events from './pages/Events';
 
 function App() {
 
@@ -63,8 +64,10 @@ function App() {
         <Route path="login" element={<LoginPage />} />
         <Route path="profile" element={<Profile />} />
         <Route path="/manage-events" element={<ManageEvents />} />
+        <Route path="/edit-profile" element={<EditProfilePage />} />
         <Route path="/add-event" element={<AddEvent />} />
         <Route path="/edit-event/:eventId" element={<EditEvent />} />
+        <Route path="/events" element={<Events />} />
       </Routes>
     </SessionContext.Provider>
   )

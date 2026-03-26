@@ -7,7 +7,9 @@ import EventCard from "../components/EventCard";
 
 
 const ManageEvents = () => {
+
     const [events, setEvents] = useState(null)
+
 
     useEffect(() => {
         const fetchEvents = async () => {
@@ -37,6 +39,7 @@ const ManageEvents = () => {
             </div>
         </MainLayout>
     );
-};
+}
+
 
 export default ManageEvents;

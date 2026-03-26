@@ -37,7 +37,7 @@ const Profile = () => {
                 </div>
                 <div>
 
-                    <Link to="/editprofile" className="btn btn-primary rounded-full">
+                    <Link to="/edit-profile" className="btn btn-primary rounded-full">
                         <EditProfileIcon className="text-lg" />
                         Edit Profile
                     </Link>
