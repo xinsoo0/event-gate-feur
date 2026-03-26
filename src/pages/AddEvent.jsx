@@ -1,13 +1,8 @@
 import React from "react";
 import MainLayout from "../layouts/MainLayout";
-import Input from "../components/icons/form/Input";
-import supabase from "../utils/supabase";
-import { useNavigate } from "react-router";
-import EventForm from "./EventForm";
+import EventForm from "../components/EventForm";
 
 const AddEvent = () => {
-
-
     return (
         <MainLayout>
             <EventForm />

@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from './icons/Card'
+import Card from './Card'
 import { Link } from 'react-router'
 
 const EventCard = ({ event }) => {

@@ -29,9 +29,9 @@ const ManageEvents = () => {
                         Add Event
                     </Link>
                 </div>
-                <div className="grid grid-cols-3 gap-4">
+                <div className="grid grid-cols-3 gap-4 py-5">
                     {events?.map((event) => {
-                        return <EventCard event={event} />
+                        return <EventCard event={event} />;
                     })}
                 </div>
             </div>

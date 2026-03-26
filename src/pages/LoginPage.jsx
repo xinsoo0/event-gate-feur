@@ -1,7 +1,7 @@
 import React from 'react'
 import MainLayout from '../layouts/MainLayout'
 import Input from '../components/icons/form/Input'
-import Card from '../components/icons/Card'
+import Card from '../components/Card'
 import SignUpButton from '../components/icons/SignUpButton'
 import supabase from '../utils/supabase'
 import { useContext, useEffect } from 'react'

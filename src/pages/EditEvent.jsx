@@ -4,6 +4,7 @@ import { useParams } from 'react-router'
 import { useEffect } from 'react'
 import supabase from '../utils/supabase'
 import { useState } from 'react'
+import EventForm from '../components/EventForm'
 
 const EditEvent = () => {
     const { eventId } = useParams()
@@ -16,7 +17,6 @@ const EditEvent = () => {
                 .select()
                 .eq("id", eventId)
                 .single()
-
             if (eventError) alert(eventError)
             if (eventData) setEvent(eventData)
         }
@@ -25,7 +25,9 @@ const EditEvent = () => {
     }, [eventId])
 
     return (
-        <MainLayout> {event?.title}</MainLayout>
+        <MainLayout>
+            <EventForm eventData={event} />
+        </MainLayout>
     )
 }
 
