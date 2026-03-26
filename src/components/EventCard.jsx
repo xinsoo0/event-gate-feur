@@ -26,7 +26,7 @@ const EventCard = ({ event }) => {
 
     return (
         <Card>
-            <h2 className="text-xl font-bold"> {event.title}</h2>
+            <h2 className="text-xl font-bold text-center "> {event.title}</h2>
             <p>Start Date: {event.start_date}</p>
             <p>End Date: {event.end_date}</p>
             <p>Start Time: {event.start_time}</p>

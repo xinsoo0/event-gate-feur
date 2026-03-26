@@ -31,7 +31,7 @@ const Events = () => {
             if (registrationsError) alert(registrationsError)
             if (registrationsData) setRegistrations(registrationsData)
         }
-        fetchRegistrations()
+        if (profile) fetchRegistrations()
     }, [profile])
 
     console.log("registrations", registrations)
